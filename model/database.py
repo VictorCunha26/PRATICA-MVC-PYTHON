@@ -70,4 +70,4 @@ class Database:
 # Área 51           
 db = Database()
 db.conectar()
-print(db.consultar('select * from tarefa'))
+db.consultar('select * from tarefa')
