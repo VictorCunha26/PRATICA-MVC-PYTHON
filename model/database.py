@@ -1,9 +1,7 @@
-import mysql . # iMPORTANDO a Biblioteca do connector do MySQL
+import mysql.connector as mc # iMPORTANDO a Biblioteca do connector do MySQL
 from mysql.connector import Error # IMPORTANDO a classe Error para tratar as mensagens de erro do código
 from dotenv import load_dotenv # IMPORTANDO a função load_dotenv
 from os import getenv
-
-import mysql.connector # IMPORTANDO a função getenv
 
 class Database:
     def __init__(self):
@@ -18,8 +16,25 @@ class Database:
     def conectar(self):
         """Estabelece uma conexão com o banco de dados."""
         try:
-            self.connection = mysql.connector.connect(
+            self.connection = mc.connect(
                 host = self.host,
-                database = self.database
-
+                database = self.database,
+                user = self.username,
+                password = self.password
             )
+            if self.connection.is_connected():
+                self.cursor = self.connection.cursor(dictionary=True)
+                print('Conexão ao banco de dados realizada com sucesso!')
+
+        except Error as e: 
+            print(f'Erro de conexão: {e}')
+            self.connection = None
+            self.cursor = None
+
+    def desconectar(self):
+        """Encerra a conexão com o banco de dados e o cursor, se existirem."""
+        if self.cursor: 
+            self.cursor.close()
+        if self.connection:
+            self.connection.close()
+        print('Conexão com o banco de dados encerrada com sucesso!')
