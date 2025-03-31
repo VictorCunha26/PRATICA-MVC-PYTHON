@@ -34,7 +34,15 @@ class Tarefa:
         db.conectar()
 
         sql = 'DELETE FROM tarefa WHERE id = %s'
-        params = (idTarefa) # Precisa passar como tupla (a, b, c, ...)
+        params = (idTarefa,) # Precisa passar como tupla (a, b, c, ...)
+        db.executar(sql, params)
+        db.desconectar()
+    
+    def atualizarTarefa(self):
+        db = Database()
+        db.conectar()
+        sql = 'UPDATE tarefa SET titulo = %s,  data_conclusao = %s, WHERE id = %s'
+        params = (self.id, self.titulo, self.data_conclusao, )
         db.executar(sql, params)
         db.desconectar()
 

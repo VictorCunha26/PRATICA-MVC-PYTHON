@@ -19,3 +19,8 @@ def index():
 def delete(idTarefa):
     Tarefa.apagarTarefa(idTarefa)
     return redirect(url_for('index'))
+
+@app.route('/update/<int:idTarefa>')
+def update(idTarefa):
+    Tarefa.atualizarTarefa(idTarefa)
+    return redirect(url_for('index'))
