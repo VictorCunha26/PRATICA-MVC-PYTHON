@@ -17,6 +17,5 @@ def index():
 
 @app.route('/delete/<int:idTarefa>')
 def delete(idTarefa):
-    tarefa =Tarefa(id=idTarefa)
-    tarefa.apagarTarefa()
+    Tarefa.apagarTarefa(idTarefa)
     return redirect(url_for('index'))
