@@ -11,7 +11,7 @@ class Database:
         self.password = getenv('DB_PSWD')
         self.database = getenv('DB_NAME')
         self.connection = None # Inicialização da conexão 
-        self.cursor = None # Inicialização do cursor
+        self.cursor = None # Inicialização do cursor o mensageiro
 
     def conectar(self):
         """Estabelece uma conexão com o banco de dados."""
