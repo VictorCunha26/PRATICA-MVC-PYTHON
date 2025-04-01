@@ -10,9 +10,18 @@
     <ul>
         {% for tarefa in tarefas %}
             <li> 
-                {{ tarefa.titulo }} - {{ tarefa.data_conclusao }}
+                {{ tarefa.id }} - {{ tarefa.titulo }} - {{ tarefa.data_conclusao }}
                 <a href="{{ url_for('delete', idTarefa=tarefa.id) }}">Apagar</a>
-                <a href="{{ url_for('update', idTarefa=tarefa.id) }}">Atualizar</a>
+                <a href="#" onclick="document.getElementById('edit-form-{{ tarefa.id }}').style.display = 'block';">Editar</a>
+ 
+                <!-- Formulário de edição inline -->
+                <form id="edit-form-{{ tarefa.id }}" method="POST" action="{{ url_for('edit', idTarefa=tarefa.id) }}" style="display: none; margin-top: 10px;">
+                    <input type="text" name="titulo" value="{{ tarefa.titulo }}" required>
+                    <input type="date" name="data_conclusao" value="{{ tarefa.data_conclusao }}">
+                    <button type="submit">Salvar</button>
+                    <button type="button" onclick="document.getElementById('edit-form-{{ tarefa.id }}').style.display = 'none';">Cancelar</button>
+                </form>
+ 
             </li>
         {% endfor %}
     </ul>
