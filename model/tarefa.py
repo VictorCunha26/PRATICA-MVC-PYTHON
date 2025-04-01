@@ -6,7 +6,7 @@ class Tarefa:
         self.id = id
         self.data_conclusao = data_conclusao
  
-    def salvarTarefa(self):
+    def salvar_Tarefa(self):
         """Salva uma nova tarefa no banco de dados!?"""
         db = Database()
         db.conectar()
@@ -16,7 +16,7 @@ class Tarefa:
         db.executar(sql, params)
         db.desconectar()
  
-    def listarTarefa():
+    def listar_Tarefa():
         """Retornar uma lista com todas as tarefas..."""
         db = Database()
         db.conectar()
@@ -27,7 +27,7 @@ class Tarefa:
         return tarefas if tarefas else []
    
     @staticmethod
-    def apagarTarefa(idTarefa):
+    def apagar_Tarefa(idTarefa):
         """Apaga uma tarefa cadastrada no banco de dados?"""
         db = Database()
         db.conectar()
@@ -36,7 +36,7 @@ class Tarefa:
         db.executar(sql, params)
         db.desconectar()
  
-    def atualizarTarefa(self):
+    def atualizar_Tarefa(self):
         db = Database()
         db.conectar()
         sql = "UPDATE tarefa SET titulo = %s, data_conclusao = %s WHERE id = %s"
