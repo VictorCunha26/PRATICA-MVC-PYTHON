@@ -6,7 +6,7 @@ class Tarefa:
         self.id = id
         self.data_conclusao = data_conclusao
  
-    def salvar_Tarefa(self):
+    def salvarTarefa(self):
         """Salva uma nova tarefa no banco de dados!?"""
         db = Database()
         db.conectar()

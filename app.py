@@ -9,7 +9,7 @@ def index():
         titulo = request.form["titulo"]
         data_conclusao = request.form["data_conclusao"]
         tarefa = Tarefa(titulo = titulo, data_conclusao = data_conclusao)
-        tarefa.salvar_Tarefa()
+        tarefa.salvarTarefa()
         return redirect(url_for("index"))
  
     tarefas = Tarefa.listar_Tarefa()
